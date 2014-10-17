@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Remove Rejection";
+}
+
+<h2>RemoveRejection</h2>
+
+@using (Html.BeginForm("Remove", "Rejections"))
+{
+    @Html.Label("Email Address:")
+    @Html.TextBox("address")
+    <input type="submit" value="Submit" />
+}

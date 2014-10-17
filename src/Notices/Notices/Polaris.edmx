@@ -1,0 +1,814 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PolarisModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLC_Custom_SMS_Group">
+          <Key>
+            <PropertyRef Name="PhoneNumber" />
+          </Key>
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CLC_Custom_SMS_Queue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Organizations">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+          </Key>
+          <Property Name="OrganizationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentOrganizationID" Type="int" />
+          <Property Name="OrganizationCodeID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Abbreviation" Type="varchar" MaxLength="15" />
+          <Property Name="SA_ContactPersonID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="ModifierID" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PatronNotes">
+          <Key>
+            <PropertyRef Name="PatronID" />
+          </Key>
+          <Property Name="PatronID" Type="int" Nullable="false" />
+          <Property Name="NonBlockingStatusNotes" Type="varchar" MaxLength="4000" />
+          <Property Name="BlockingStatusNotes" Type="varchar" MaxLength="4000" />
+          <Property Name="NonBlockingStatusNoteDate" Type="datetime" />
+          <Property Name="BlockingStatusNoteDate" Type="datetime" />
+          <Property Name="NonBlockingBranchID" Type="int" />
+          <Property Name="NonBlockingUserID" Type="int" />
+          <Property Name="NonBlockingWorkstationID" Type="int" />
+          <Property Name="BlockingBranchID" Type="int" />
+          <Property Name="BlockingUserID" Type="int" />
+          <Property Name="BlockingWorkstationID" Type="int" />
+        </EntityType>
+        <EntityType Name="PatronRecordSets">
+          <Key>
+            <PropertyRef Name="RecordSetID" />
+            <PropertyRef Name="PatronID" />
+          </Key>
+          <Property Name="RecordSetID" Type="int" Nullable="false" />
+          <Property Name="PatronID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PatronRegistration">
+          <Key>
+            <PropertyRef Name="PatronID" />
+          </Key>
+          <Property Name="PatronID" Type="int" Nullable="false" />
+          <Property Name="LanguageID" Type="smallint" />
+          <Property Name="NameFirst" Type="varchar" MaxLength="32" />
+          <Property Name="NameLast" Type="varchar" MaxLength="32" />
+          <Property Name="NameMiddle" Type="varchar" MaxLength="32" />
+          <Property Name="NameTitle" Type="varchar" MaxLength="8" />
+          <Property Name="NameSuffix" Type="varchar" MaxLength="4" />
+          <Property Name="PhoneVoice1" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneVoice2" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneVoice3" Type="varchar" MaxLength="20" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="64" />
+          <Property Name="Password" Type="varchar" MaxLength="16" />
+          <Property Name="EntryDate" Type="datetime" />
+          <Property Name="ExpirationDate" Type="datetime" />
+          <Property Name="AddrCheckDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="User1" Type="varchar" MaxLength="64" />
+          <Property Name="User2" Type="varchar" MaxLength="64" />
+          <Property Name="User3" Type="varchar" MaxLength="64" />
+          <Property Name="User4" Type="varchar" MaxLength="64" />
+          <Property Name="User5" Type="varchar" MaxLength="64" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="Birthdate" Type="datetime" />
+          <Property Name="RegistrationDate" Type="datetime" />
+          <Property Name="FormerID" Type="varchar" MaxLength="20" />
+          <Property Name="ReadingList" Type="tinyint" Nullable="false" />
+          <Property Name="PhoneFAX" Type="varchar" MaxLength="20" />
+          <Property Name="DeliveryOptionID" Type="int" />
+          <Property Name="StatisticalClassID" Type="int" />
+          <Property Name="CollectionExempt" Type="bit" Nullable="false" />
+          <Property Name="AltEmailAddress" Type="varchar" MaxLength="64" />
+          <Property Name="ExcludeFromOverdues" Type="bit" Nullable="false" />
+          <Property Name="SDIEmailAddress" Type="varchar" MaxLength="150" />
+          <Property Name="SDIEmailFormatID" Type="int" />
+          <Property Name="SDIPositiveAssent" Type="bit" />
+          <Property Name="SDIPositiveAssentDate" Type="datetime" />
+          <Property Name="DeletionExempt" Type="bit" Nullable="false" />
+          <Property Name="PatronFullName" Type="varchar" MaxLength="100" />
+          <Property Name="ExcludeFromHolds" Type="bit" Nullable="false" />
+          <Property Name="ExcludeFromBills" Type="bit" Nullable="false" />
+          <Property Name="EmailFormatID" Type="int" Nullable="false" />
+          <Property Name="PatronFirstLastName" Type="varchar" MaxLength="100" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="MergeDate" Type="datetime" />
+          <Property Name="MergeUserID" Type="int" />
+          <Property Name="MergeBarcode" Type="varchar" MaxLength="20" />
+          <Property Name="EnableSMS" Type="bit" />
+          <Property Name="RequestPickupBranchID" Type="int" />
+          <Property Name="Phone1CarrierID" Type="int" />
+          <Property Name="Phone2CarrierID" Type="int" />
+          <Property Name="Phone3CarrierID" Type="int" />
+          <Property Name="eReceiptOptionID" Type="int" />
+          <Property Name="TxtPhoneNumber" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Patrons">
+          <Key>
+            <PropertyRef Name="PatronID" />
+          </Key>
+          <Property Name="PatronID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatronCodeID" Type="int" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="ModifierID" Type="int" />
+          <Property Name="Barcode" Type="varchar" MaxLength="20" />
+          <Property Name="SystemBlocks" Type="int" Nullable="false" />
+          <Property Name="YTDCircCount" Type="int" Nullable="false" />
+          <Property Name="LifetimeCircCount" Type="int" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" />
+          <Property Name="ClaimCount" Type="int" />
+          <Property Name="LostItemCount" Type="int" />
+          <Property Name="ChargesAmount" Type="money" Nullable="false" />
+          <Property Name="CreditsAmount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecordSets">
+          <Key>
+            <PropertyRef Name="RecordSetID" />
+          </Key>
+          <Property Name="RecordSetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ObjectTypeID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="ModifierID" Type="int" />
+          <Property Name="OrganizationOwnerID" Type="int" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="Note" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="fk_OrgHierarchy">
+          <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+          <End Role="Organizations1" Type="Self.Organizations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="Organizations1">
+              <PropertyRef Name="ParentOrganizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OwningOrg">
+          <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+          <End Role="RecordSets" Type="Self.RecordSets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="RecordSets">
+              <PropertyRef Name="OrganizationOwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PatronBranch">
+          <End Role="Organizations" Type="Self.Organizations" Multiplicity="1" />
+          <End Role="Patrons" Type="Self.Patrons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="Patrons">
+              <PropertyRef Name="OrganizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PatronNotes_BlockingBranchID">
+          <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+          <End Role="PatronNotes" Type="Self.PatronNotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="PatronNotes">
+              <PropertyRef Name="BlockingBranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PatronNotes_NonBlockingBranchID">
+          <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+          <End Role="PatronNotes" Type="Self.PatronNotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="PatronNotes">
+              <PropertyRef Name="NonBlockingBranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PatronNotes_Patrons">
+          <End Role="Patrons" Type="Self.Patrons" Multiplicity="1" />
+          <End Role="PatronNotes" Type="Self.PatronNotes" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patrons">
+              <PropertyRef Name="PatronID" />
+            </Principal>
+            <Dependent Role="PatronNotes">
+              <PropertyRef Name="PatronID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PatronRecordSets_Patrons">
+          <End Role="Patrons" Type="Self.Patrons" Multiplicity="1" />
+          <End Role="PatronRecordSets" Type="Self.PatronRecordSets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patrons">
+              <PropertyRef Name="PatronID" />
+            </Principal>
+            <Dependent Role="PatronRecordSets">
+              <PropertyRef Name="PatronID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PatronRecordSets_RecordSets">
+          <End Role="RecordSets" Type="Self.RecordSets" Multiplicity="1" />
+          <End Role="PatronRecordSets" Type="Self.PatronRecordSets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecordSets">
+              <PropertyRef Name="RecordSetID" />
+            </Principal>
+            <Dependent Role="PatronRecordSets">
+              <PropertyRef Name="RecordSetID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PatronRegistration_RequestPickupBranchID">
+          <End Role="Organizations" Type="Self.Organizations" Multiplicity="0..1" />
+          <End Role="PatronRegistration" Type="Self.PatronRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizations">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="PatronRegistration">
+              <PropertyRef Name="RequestPickupBranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PatronRelationship">
+          <End Role="Patrons" Type="Self.Patrons" Multiplicity="1" />
+          <End Role="PatronRegistration" Type="Self.PatronRegistration" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patrons">
+              <PropertyRef Name="PatronID" />
+            </Principal>
+            <Dependent Role="PatronRegistration">
+              <PropertyRef Name="PatronID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PolarisModelStoreContainer">
+          <EntitySet Name="CLC_Custom_SMS_Group" EntityType="Self.CLC_Custom_SMS_Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLC_Custom_SMS_Queue" EntityType="Self.CLC_Custom_SMS_Queue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organizations" EntityType="Self.Organizations" Schema="Polaris" store:Type="Tables" />
+          <EntitySet Name="PatronNotes" EntityType="Self.PatronNotes" Schema="Polaris" store:Type="Tables" />
+          <EntitySet Name="PatronRecordSets" EntityType="Self.PatronRecordSets" Schema="Polaris" store:Type="Tables" />
+          <EntitySet Name="PatronRegistration" EntityType="Self.PatronRegistration" Schema="Polaris" store:Type="Tables" />
+          <EntitySet Name="Patrons" EntityType="Self.Patrons" Schema="Polaris" store:Type="Tables" />
+          <EntitySet Name="RecordSets" EntityType="Self.RecordSets" Schema="Polaris" store:Type="Tables" />
+          <AssociationSet Name="fk_OrgHierarchy" Association="Self.fk_OrgHierarchy">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="Organizations1" EntitySet="Organizations" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OwningOrg" Association="Self.fk_OwningOrg">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="RecordSets" EntitySet="RecordSets" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PatronBranch" Association="Self.fk_PatronBranch">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="Patrons" EntitySet="Patrons" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PatronNotes_BlockingBranchID" Association="Self.fk_PatronNotes_BlockingBranchID">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="PatronNotes" EntitySet="PatronNotes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PatronNotes_NonBlockingBranchID" Association="Self.fk_PatronNotes_NonBlockingBranchID">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="PatronNotes" EntitySet="PatronNotes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PatronNotes_Patrons" Association="Self.fk_PatronNotes_Patrons">
+            <End Role="Patrons" EntitySet="Patrons" />
+            <End Role="PatronNotes" EntitySet="PatronNotes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PatronRecordSets_Patrons" Association="Self.fk_PatronRecordSets_Patrons">
+            <End Role="Patrons" EntitySet="Patrons" />
+            <End Role="PatronRecordSets" EntitySet="PatronRecordSets" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PatronRecordSets_RecordSets" Association="Self.fk_PatronRecordSets_RecordSets">
+            <End Role="RecordSets" EntitySet="RecordSets" />
+            <End Role="PatronRecordSets" EntitySet="PatronRecordSets" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PatronRegistration_RequestPickupBranchID" Association="Self.fk_PatronRegistration_RequestPickupBranchID">
+            <End Role="Organizations" EntitySet="Organizations" />
+            <End Role="PatronRegistration" EntitySet="PatronRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PatronRelationship" Association="Self.fk_PatronRelationship">
+            <End Role="Patrons" EntitySet="Patrons" />
+            <End Role="PatronRegistration" EntitySet="PatronRegistration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PolarisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PatronRegistration">
+          <Key>
+            <PropertyRef Name="PatronID" />
+          </Key>
+          <Property Name="PatronID" Type="Int32" Nullable="false" />
+          <Property Name="LanguageID" Type="Int16" />
+          <Property Name="NameFirst" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="NameLast" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="NameMiddle" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="NameTitle" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="NameSuffix" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneVoice1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneVoice2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneVoice3" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="EntryDate" Type="DateTime" Precision="3" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
+          <Property Name="AddrCheckDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="User1" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="User2" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="User3" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="User4" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="User5" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Birthdate" Type="DateTime" Precision="3" />
+          <Property Name="RegistrationDate" Type="DateTime" Precision="3" />
+          <Property Name="FormerID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ReadingList" Type="Byte" Nullable="false" />
+          <Property Name="PhoneFAX" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryOptionID" Type="Int32" />
+          <Property Name="StatisticalClassID" Type="Int32" />
+          <Property Name="CollectionExempt" Type="Boolean" Nullable="false" />
+          <Property Name="AltEmailAddress" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ExcludeFromOverdues" Type="Boolean" Nullable="false" />
+          <Property Name="SDIEmailAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="SDIEmailFormatID" Type="Int32" />
+          <Property Name="SDIPositiveAssent" Type="Boolean" />
+          <Property Name="SDIPositiveAssentDate" Type="DateTime" Precision="3" />
+          <Property Name="DeletionExempt" Type="Boolean" Nullable="false" />
+          <Property Name="PatronFullName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ExcludeFromHolds" Type="Boolean" Nullable="false" />
+          <Property Name="ExcludeFromBills" Type="Boolean" Nullable="false" />
+          <Property Name="EmailFormatID" Type="Int32" Nullable="false" />
+          <Property Name="PatronFirstLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MergeDate" Type="DateTime" Precision="3" />
+          <Property Name="MergeUserID" Type="Int32" />
+          <Property Name="MergeBarcode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EnableSMS" Type="Boolean" />
+          <Property Name="RequestPickupBranchID" Type="Int32" />
+          <Property Name="Phone1CarrierID" Type="Int32" />
+          <Property Name="Phone2CarrierID" Type="Int32" />
+          <Property Name="Phone3CarrierID" Type="Int32" />
+          <Property Name="eReceiptOptionID" Type="Int32" />
+          <Property Name="TxtPhoneNumber" Type="Byte" />
+          <NavigationProperty Name="Patron" Relationship="Self.fk_PatronRelationship" FromRole="PatronRegistration" ToRole="Patrons" />
+          <NavigationProperty Name="Organization" Relationship="PolarisModel.fk_PatronRegistration_RequestPickupBranchID" FromRole="PatronRegistration" ToRole="Organization" />
+        </EntityType>
+        <EntityType Name="Patron">
+          <Key>
+            <PropertyRef Name="PatronID" />
+          </Key>
+          <Property Name="PatronID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatronCodeID" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="ModifierID" Type="Int32" />
+          <Property Name="Barcode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SystemBlocks" Type="Int32" Nullable="false" />
+          <Property Name="YTDCircCount" Type="Int32" Nullable="false" />
+          <Property Name="LifetimeCircCount" Type="Int32" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Precision="3" />
+          <Property Name="ClaimCount" Type="Int32" />
+          <Property Name="LostItemCount" Type="Int32" />
+          <Property Name="ChargesAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="CreditsAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="PatronRegistration" Relationship="Self.fk_PatronRelationship" FromRole="Patrons" ToRole="PatronRegistration" />
+          <NavigationProperty Name="RecordSets" Relationship="Self.PatronRecordSets" FromRole="Patrons" ToRole="RecordSets" />
+          <NavigationProperty Name="Organization" Relationship="PolarisModel.fk_PatronBranch" FromRole="Patron" ToRole="Organization" />
+          <NavigationProperty Name="PatronNote" Relationship="PolarisModel.fk_PatronNotes_Patrons" FromRole="Patron" ToRole="PatronNote" />
+        </EntityType>
+        <EntityType Name="RecordSet">
+          <Key>
+            <PropertyRef Name="RecordSetID" />
+          </Key>
+          <Property Name="RecordSetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ObjectTypeID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="ModifierID" Type="Int32" />
+          <Property Name="OrganizationOwnerID" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Patrons" Relationship="Self.PatronRecordSets" FromRole="RecordSets" ToRole="Patrons" />
+          <NavigationProperty Name="Organization" Relationship="PolarisModel.fk_OwningOrg" FromRole="RecordSet" ToRole="Organization" />
+        </EntityType>
+        <Association Name="fk_PatronRelationship">
+          <End Role="Patrons" Type="Self.Patron" Multiplicity="1" />
+          <End Role="PatronRegistration" Type="Self.PatronRegistration" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patrons">
+              <PropertyRef Name="PatronID" />
+            </Principal>
+            <Dependent Role="PatronRegistration">
+              <PropertyRef Name="PatronID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PatronRecordSets">
+          <End Role="Patrons" Type="Self.Patron" Multiplicity="*" />
+          <End Role="RecordSets" Type="Self.RecordSet" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="PolarisEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PatronRegistrations" EntityType="Self.PatronRegistration" />
+          <EntitySet Name="Patrons" EntityType="Self.Patron" />
+          <EntitySet Name="RecordSets" EntityType="Self.RecordSet" />
+          <AssociationSet Name="fk_PatronRelationship" Association="Self.fk_PatronRelationship">
+            <End Role="Patrons" EntitySet="Patrons" />
+            <End Role="PatronRegistration" EntitySet="PatronRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="PatronRecordSets" Association="Self.PatronRecordSets">
+            <End Role="Patrons" EntitySet="Patrons" />
+            <End Role="RecordSets" EntitySet="RecordSets" />
+          </AssociationSet>
+          <EntitySet Name="Organizations" EntityType="PolarisModel.Organization" />
+          <AssociationSet Name="fk_OrgHierarchy" Association="PolarisModel.fk_OrgHierarchy">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="Organization1" EntitySet="Organizations" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OwningOrg" Association="PolarisModel.fk_OwningOrg">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="RecordSet" EntitySet="RecordSets" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PatronBranch" Association="PolarisModel.fk_PatronBranch">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="Patron" EntitySet="Patrons" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PatronRegistration_RequestPickupBranchID" Association="PolarisModel.fk_PatronRegistration_RequestPickupBranchID">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="PatronRegistration" EntitySet="PatronRegistrations" />
+          </AssociationSet>
+          <EntitySet Name="PatronNotes" EntityType="PolarisModel.PatronNote" />
+          <AssociationSet Name="fk_PatronNotes_BlockingBranchID" Association="PolarisModel.fk_PatronNotes_BlockingBranchID">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="PatronNote" EntitySet="PatronNotes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PatronNotes_NonBlockingBranchID" Association="PolarisModel.fk_PatronNotes_NonBlockingBranchID">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="PatronNote" EntitySet="PatronNotes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PatronNotes_Patrons" Association="PolarisModel.fk_PatronNotes_Patrons">
+            <End Role="Patron" EntitySet="Patrons" />
+            <End Role="PatronNote" EntitySet="PatronNotes" />
+          </AssociationSet>
+          <EntitySet Name="CLC_Custom_SMS_Group" EntityType="PolarisModel.CLC_Custom_SMS_Group" />
+          <EntitySet Name="CLC_Custom_SMS_Queue" EntityType="PolarisModel.CLC_Custom_SMS_Queue" />
+        </EntityContainer>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+          </Key>
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentOrganizationID" Type="Int32" />
+          <Property Name="OrganizationCodeID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Abbreviation" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SA_ContactPersonID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="ModifierID" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ChildOrganizations" Relationship="PolarisModel.fk_OrgHierarchy" FromRole="Organization" ToRole="Organization1" />
+          <NavigationProperty Name="ParentOrganization" Relationship="PolarisModel.fk_OrgHierarchy" FromRole="Organization1" ToRole="Organization" />
+          <NavigationProperty Name="RecordSets" Relationship="PolarisModel.fk_OwningOrg" FromRole="Organization" ToRole="RecordSet" />
+          <NavigationProperty Name="Patrons" Relationship="PolarisModel.fk_PatronBranch" FromRole="Organization" ToRole="Patron" />
+          <NavigationProperty Name="PatronRegistrations" Relationship="PolarisModel.fk_PatronRegistration_RequestPickupBranchID" FromRole="Organization" ToRole="PatronRegistration" />
+          <NavigationProperty Name="PatronNotes" Relationship="PolarisModel.fk_PatronNotes_BlockingBranchID" FromRole="Organization" ToRole="PatronNote" />
+          <NavigationProperty Name="PatronNotes1" Relationship="PolarisModel.fk_PatronNotes_NonBlockingBranchID" FromRole="Organization" ToRole="PatronNote" />
+        </EntityType>
+        <Association Name="fk_OrgHierarchy">
+          <End Type="PolarisModel.Organization" Role="Organization" Multiplicity="0..1" />
+          <End Type="PolarisModel.Organization" Role="Organization1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="Organization1">
+              <PropertyRef Name="ParentOrganizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OwningOrg">
+          <End Type="PolarisModel.Organization" Role="Organization" Multiplicity="0..1" />
+          <End Type="PolarisModel.RecordSet" Role="RecordSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="RecordSet">
+              <PropertyRef Name="OrganizationOwnerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PatronBranch">
+          <End Type="PolarisModel.Organization" Role="Organization" Multiplicity="1" />
+          <End Type="PolarisModel.Patron" Role="Patron" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="Patron">
+              <PropertyRef Name="OrganizationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PatronRegistration_RequestPickupBranchID">
+          <End Type="PolarisModel.Organization" Role="Organization" Multiplicity="0..1" />
+          <End Type="PolarisModel.PatronRegistration" Role="PatronRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="PatronRegistration">
+              <PropertyRef Name="RequestPickupBranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PatronNote">
+          <Key>
+            <PropertyRef Name="PatronID" />
+          </Key>
+          <Property Name="PatronID" Type="Int32" Nullable="false" />
+          <Property Name="NonBlockingStatusNotes" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="BlockingStatusNotes" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="NonBlockingStatusNoteDate" Type="DateTime" Precision="3" />
+          <Property Name="BlockingStatusNoteDate" Type="DateTime" Precision="3" />
+          <Property Name="NonBlockingBranchID" Type="Int32" />
+          <Property Name="NonBlockingUserID" Type="Int32" />
+          <Property Name="NonBlockingWorkstationID" Type="Int32" />
+          <Property Name="BlockingBranchID" Type="Int32" />
+          <Property Name="BlockingUserID" Type="Int32" />
+          <Property Name="BlockingWorkstationID" Type="Int32" />
+          <NavigationProperty Name="Organization" Relationship="PolarisModel.fk_PatronNotes_BlockingBranchID" FromRole="PatronNote" ToRole="Organization" />
+          <NavigationProperty Name="Organization1" Relationship="PolarisModel.fk_PatronNotes_NonBlockingBranchID" FromRole="PatronNote" ToRole="Organization" />
+          <NavigationProperty Name="Patron" Relationship="PolarisModel.fk_PatronNotes_Patrons" FromRole="PatronNote" ToRole="Patron" />
+        </EntityType>
+        <Association Name="fk_PatronNotes_BlockingBranchID">
+          <End Type="PolarisModel.Organization" Role="Organization" Multiplicity="0..1" />
+          <End Type="PolarisModel.PatronNote" Role="PatronNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="PatronNote">
+              <PropertyRef Name="BlockingBranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PatronNotes_NonBlockingBranchID">
+          <End Type="PolarisModel.Organization" Role="Organization" Multiplicity="0..1" />
+          <End Type="PolarisModel.PatronNote" Role="PatronNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrganizationID" />
+            </Principal>
+            <Dependent Role="PatronNote">
+              <PropertyRef Name="NonBlockingBranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PatronNotes_Patrons">
+          <End Type="PolarisModel.Patron" Role="Patron" Multiplicity="1" />
+          <End Type="PolarisModel.PatronNote" Role="PatronNote" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patron">
+              <PropertyRef Name="PatronID" />
+            </Principal>
+            <Dependent Role="PatronNote">
+              <PropertyRef Name="PatronID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CLC_Custom_SMS_Group">
+          <Key>
+            <PropertyRef Name="PhoneNumber" />
+          </Key>
+          <Property Name="PhoneNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+        </EntityType>
+        <EntityType Name="CLC_Custom_SMS_Queue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PolarisModelStoreContainer" CdmEntityContainer="PolarisEntities">
+          <EntitySetMapping Name="PatronRegistrations">
+            <EntityTypeMapping TypeName="PolarisModel.PatronRegistration">
+              <MappingFragment StoreEntitySet="PatronRegistration">
+                <ScalarProperty Name="PatronID" ColumnName="PatronID" />
+                <ScalarProperty Name="LanguageID" ColumnName="LanguageID" />
+                <ScalarProperty Name="NameFirst" ColumnName="NameFirst" />
+                <ScalarProperty Name="NameLast" ColumnName="NameLast" />
+                <ScalarProperty Name="NameMiddle" ColumnName="NameMiddle" />
+                <ScalarProperty Name="NameTitle" ColumnName="NameTitle" />
+                <ScalarProperty Name="NameSuffix" ColumnName="NameSuffix" />
+                <ScalarProperty Name="PhoneVoice1" ColumnName="PhoneVoice1" />
+                <ScalarProperty Name="PhoneVoice2" ColumnName="PhoneVoice2" />
+                <ScalarProperty Name="PhoneVoice3" ColumnName="PhoneVoice3" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="AddrCheckDate" ColumnName="AddrCheckDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="User1" ColumnName="User1" />
+                <ScalarProperty Name="User2" ColumnName="User2" />
+                <ScalarProperty Name="User3" ColumnName="User3" />
+                <ScalarProperty Name="User4" ColumnName="User4" />
+                <ScalarProperty Name="User5" ColumnName="User5" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="FormerID" ColumnName="FormerID" />
+                <ScalarProperty Name="ReadingList" ColumnName="ReadingList" />
+                <ScalarProperty Name="PhoneFAX" ColumnName="PhoneFAX" />
+                <ScalarProperty Name="DeliveryOptionID" ColumnName="DeliveryOptionID" />
+                <ScalarProperty Name="StatisticalClassID" ColumnName="StatisticalClassID" />
+                <ScalarProperty Name="CollectionExempt" ColumnName="CollectionExempt" />
+                <ScalarProperty Name="AltEmailAddress" ColumnName="AltEmailAddress" />
+                <ScalarProperty Name="ExcludeFromOverdues" ColumnName="ExcludeFromOverdues" />
+                <ScalarProperty Name="SDIEmailAddress" ColumnName="SDIEmailAddress" />
+                <ScalarProperty Name="SDIEmailFormatID" ColumnName="SDIEmailFormatID" />
+                <ScalarProperty Name="SDIPositiveAssent" ColumnName="SDIPositiveAssent" />
+                <ScalarProperty Name="SDIPositiveAssentDate" ColumnName="SDIPositiveAssentDate" />
+                <ScalarProperty Name="DeletionExempt" ColumnName="DeletionExempt" />
+                <ScalarProperty Name="PatronFullName" ColumnName="PatronFullName" />
+                <ScalarProperty Name="ExcludeFromHolds" ColumnName="ExcludeFromHolds" />
+                <ScalarProperty Name="ExcludeFromBills" ColumnName="ExcludeFromBills" />
+                <ScalarProperty Name="EmailFormatID" ColumnName="EmailFormatID" />
+                <ScalarProperty Name="PatronFirstLastName" ColumnName="PatronFirstLastName" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="MergeDate" ColumnName="MergeDate" />
+                <ScalarProperty Name="MergeUserID" ColumnName="MergeUserID" />
+                <ScalarProperty Name="MergeBarcode" ColumnName="MergeBarcode" />
+                <ScalarProperty Name="EnableSMS" ColumnName="EnableSMS" />
+                <ScalarProperty Name="RequestPickupBranchID" ColumnName="RequestPickupBranchID" />
+                <ScalarProperty Name="Phone1CarrierID" ColumnName="Phone1CarrierID" />
+                <ScalarProperty Name="Phone2CarrierID" ColumnName="Phone2CarrierID" />
+                <ScalarProperty Name="Phone3CarrierID" ColumnName="Phone3CarrierID" />
+                <ScalarProperty Name="eReceiptOptionID" ColumnName="eReceiptOptionID" />
+                <ScalarProperty Name="TxtPhoneNumber" ColumnName="TxtPhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patrons">
+            <EntityTypeMapping TypeName="PolarisModel.Patron">
+              <MappingFragment StoreEntitySet="Patrons">
+                <ScalarProperty Name="PatronID" ColumnName="PatronID" />
+                <ScalarProperty Name="PatronCodeID" ColumnName="PatronCodeID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="ModifierID" ColumnName="ModifierID" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="SystemBlocks" ColumnName="SystemBlocks" />
+                <ScalarProperty Name="YTDCircCount" ColumnName="YTDCircCount" />
+                <ScalarProperty Name="LifetimeCircCount" ColumnName="LifetimeCircCount" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="ClaimCount" ColumnName="ClaimCount" />
+                <ScalarProperty Name="LostItemCount" ColumnName="LostItemCount" />
+                <ScalarProperty Name="ChargesAmount" ColumnName="ChargesAmount" />
+                <ScalarProperty Name="CreditsAmount" ColumnName="CreditsAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecordSets">
+            <EntityTypeMapping TypeName="PolarisModel.RecordSet">
+              <MappingFragment StoreEntitySet="RecordSets">
+                <ScalarProperty Name="RecordSetID" ColumnName="RecordSetID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ObjectTypeID" ColumnName="ObjectTypeID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="ModifierID" ColumnName="ModifierID" />
+                <ScalarProperty Name="OrganizationOwnerID" ColumnName="OrganizationOwnerID" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="PatronRecordSets" TypeName="PolarisModel.PatronRecordSets" StoreEntitySet="PatronRecordSets">
+            <EndProperty Name="Patrons">
+              <ScalarProperty Name="PatronID" ColumnName="PatronID" />
+            </EndProperty>
+            <EndProperty Name="RecordSets">
+              <ScalarProperty Name="RecordSetID" ColumnName="RecordSetID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Organizations">
+            <EntityTypeMapping TypeName="PolarisModel.Organization">
+              <MappingFragment StoreEntitySet="Organizations">
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModifierID" ColumnName="ModifierID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="SA_ContactPersonID" ColumnName="SA_ContactPersonID" />
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrganizationCodeID" ColumnName="OrganizationCodeID" />
+                <ScalarProperty Name="ParentOrganizationID" ColumnName="ParentOrganizationID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatronNotes">
+            <EntityTypeMapping TypeName="PolarisModel.PatronNote">
+              <MappingFragment StoreEntitySet="PatronNotes">
+                <ScalarProperty Name="BlockingWorkstationID" ColumnName="BlockingWorkstationID" />
+                <ScalarProperty Name="BlockingUserID" ColumnName="BlockingUserID" />
+                <ScalarProperty Name="BlockingBranchID" ColumnName="BlockingBranchID" />
+                <ScalarProperty Name="NonBlockingWorkstationID" ColumnName="NonBlockingWorkstationID" />
+                <ScalarProperty Name="NonBlockingUserID" ColumnName="NonBlockingUserID" />
+                <ScalarProperty Name="NonBlockingBranchID" ColumnName="NonBlockingBranchID" />
+                <ScalarProperty Name="BlockingStatusNoteDate" ColumnName="BlockingStatusNoteDate" />
+                <ScalarProperty Name="NonBlockingStatusNoteDate" ColumnName="NonBlockingStatusNoteDate" />
+                <ScalarProperty Name="BlockingStatusNotes" ColumnName="BlockingStatusNotes" />
+                <ScalarProperty Name="NonBlockingStatusNotes" ColumnName="NonBlockingStatusNotes" />
+                <ScalarProperty Name="PatronID" ColumnName="PatronID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLC_Custom_SMS_Group">
+            <EntityTypeMapping TypeName="PolarisModel.CLC_Custom_SMS_Group">
+              <MappingFragment StoreEntitySet="CLC_Custom_SMS_Group">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLC_Custom_SMS_Queue">
+            <EntityTypeMapping TypeName="PolarisModel.CLC_Custom_SMS_Queue">
+              <MappingFragment StoreEntitySet="CLC_Custom_SMS_Queue">
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

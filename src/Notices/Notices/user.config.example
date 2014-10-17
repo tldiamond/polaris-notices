@@ -1,0 +1,43 @@
+﻿<appSettings>
+  <!-- Required stuff -->
+  
+  <!-- Authentication string to be sent in query string -->
+  <add key="auth_string" value="" />
+  
+  <!-- Your SQL server name -->
+  <add key="server_name" value="" />
+
+  <!-- The hour you want to start sending SMS messages, on a 24 hour clock -->
+  <add key="start_hour" value="8" />
+
+  <!-- The hour you want to stop sending SMS messages, on a 24 hour clock -->
+  <add key="stop_hour" value="22" />
+  
+  
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  
+  <!-- Optional stuff, only needed if you intend to use that particular piece of functionality -->
+
+  <!-- Phone number to use when testing SMS queueing and sending -->
+  <add key="sms_test_number" value ="" />
+
+  <!-- Your hipchat notification token in order to send notifications to the specified room -->
+  <add key="hipchat_notification_token" value="" />
+  
+  <!-- The twilio number to use to send and receive SMS messages -->
+  <add key="hipchat_sms_number" value=""/>
+  
+  <!-- Your twilio account sid, used to send SMS messages -->
+  <add key="twilio_account_sid" value="" />
+  
+  <!-- Your twilio auth token, used to send SMS messages -->
+  <add key="twilio_auth_token" value="" />
+  
+  <!-- A mandrill API key belonging to your account, used to remove rejections -->
+  <add key="mandrill_api_key" value="" />
+  
+  <!-- Something for our system monitoring, you can probably just ignore this -->
+  <add key="NewRelic.AppName" value="" />
+</appSettings>
+
