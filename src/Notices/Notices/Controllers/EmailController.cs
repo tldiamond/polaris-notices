@@ -19,11 +19,25 @@ namespace Notices.Controllers
             db = PolarisEntities.Create();
         }
 
-        public ActionResult Test()
+        public ActionResult TestBounce(string auth, string email)
         {
-            //ProcessBounce("asdf@asdf.com");
-            return Content("");
-        }        
+            if (auth != AppSettings.AuthString)
+            {
+                return Content("Invalid auth string");
+            }
+            ProcessBounce(email);
+            return Content("test bounce processed");
+        }
+
+        public ActionResult TestSpam(string auth, string email)
+        {
+            if (auth != AppSettings.AuthString)
+            {
+                return Content("Invalid auth string");
+            }
+            ProcessSpam(email);
+            return Content("test spam processed");
+        }  
 
         [ValidateInput(false)]
         public ActionResult ProcessFailure(FormCollection fc, string auth)
