@@ -19,6 +19,9 @@ This application does **NOT** require the Polaris API and has been primarily use
 ###Example Mandril Setup
 ![Example Mandrill Setup](http://media.virbcdn.com/files/77/aceb3fd114e25e11-mandrill_setup.png "Example Mandrill Setup")
 
+###SMS Configuration and Other General Information
+* You can find Wes's slides from PUG 2014 with more setup information at http://media.virbcdn.com/files/17/6b7afe76865df50e-CloudPUG2014.pdf
+
 ##Application Configuration
 These steps are from Visual Studio 2013, depending on your version and environment some adjustments may be necessary.
 * Open the solution in Visual Studio and do a build to make sure all the nuget packages get installed properly
