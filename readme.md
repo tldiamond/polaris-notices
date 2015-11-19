@@ -16,7 +16,7 @@ This portion does **NOT** require the Polaris API. This is an application to ena
 This is the account you'll give database permissions to and use to run the application pool
 
 ##Database Setup
-Run create_notices_db.sql
+Run create_notices_db.sql from Extras folder in src
 
 ##Mandrill Setup
 ###Create Webhook
