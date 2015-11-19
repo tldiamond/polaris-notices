@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d635927cabff4f3d953e4d4eb7517a27" Name="Diagram1">
+        <EntityTypeShape EntityType="NoticeModel.Dialout_String_Types" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NoticeModel.Dialout_Strings" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="NoticeModel.FK_Dialout_Strings_Dialout_String_Types" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NoticeModel.PolarisNotification" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="NoticeModel.Dialin_Ignore_List" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NoticeModel.Dialin_Patrons" Width="1.5" PointX="5.375" PointY="2.75" />
+        <EntityTypeShape EntityType="NoticeModel.SMS_Queue" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="NoticeModel.PolarisOrganization" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NoticeModel.SMS_Group" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="NoticeModel.RecordSets" Width="1.5" PointX="7.75" PointY="7.75" />
+        <EntityTypeShape EntityType="NoticeModel.RecordSetTypes" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="NoticeModel.TodaysHoldCall" Width="1.5" PointX="3.375" PointY="8.75" />
+        <EntityTypeShape EntityType="NoticeModel.EmailDomain" Width="1.5" PointX="9.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,58 @@
+﻿@model NoticeSuite.Model.callListModel
+
+<div id="container">
+    @if (!string.IsNullOrWhiteSpace(Model.PhoneNumber))
+    {
+        <h2>Most Recent Calls Made to @Model.PhoneNumber</h2>
+    }
+    else
+    {
+        <h2>Recently Made Calls</h2>
+    }
+    @using (Html.BeginForm("Calls", "History", FormMethod.Get))
+    {
+        @Html.Label("Phone Number")@:&nbsp;
+        @Html.TextBox("pn");
+        <input type="submit" />
+        if (!string.IsNullOrWhiteSpace(Model.PhoneNumber))
+        {
+            @Html.ActionLink("Clear", "Calls")
+        }
+    }
+    <hr />
+    <table id="calls" class="list-table">
+        <tr>
+            <th id="callsid_header" class="hidden">CallSid</th>
+            <th>To</th>
+            <th>Status</th>
+            <th>Call Time</th>
+            <th>Answered By</th>
+            <th>Duration</th>
+            <th>Listen</th>
+        </tr>
+
+        @foreach (var call in Model.Calls)
+        {
+            <tr>
+                <td id="callsid_row" class="hidden">@call.Sid</td>
+                <td>@call.To</td>
+                <td>@call.Status</td>
+                <td>
+                    @if (call.StartTime.HasValue)
+                    {
+                        @call.StartTime.Value.ToLocalTime();
+                    }
+                </td>
+                <td>@call.AnsweredBy</td>
+                <td>@string.Format("{0} {1}", call.Duration, call.Duration > 1 ? "Seconds" : call.Duration > 0 ? "Second" : "")</td>
+                <td>
+                    @if (call.Duration > 0 && call.HasRecording())
+                    {
+                        @Html.ActionLink("Listen to call", "Listen", new { callSid = call.Sid }, new { target = "_blank" });
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

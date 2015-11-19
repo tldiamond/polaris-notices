@@ -1,0 +1,42 @@
+﻿@model NoticeSuite.Models.UnsubscribeViewModel
+
+@{
+    ViewBag.Title = "Unsubscribe";
+}
+
+@section head{
+    <style>
+        .editor{
+            padding: 5px 10px 5px 10px;
+        }
+        .editor label{
+            display:block;
+        }
+    </style>
+}
+<h2>Unsubscribe from Library Account Email Notification</h2>
+@Html.ValidationSummary(false)
+
+<p>
+    Enter the account barcode and PIN you would like to unsubscribe from Library Account Email Notification. This will <b>change your notification method</b> to telephone or print notices. This process <b>only</b> removes you from <b>account email notices</b>. To unsubscribe from other library emails, please contact your library: <a href="http://www.clcohio.org/member-libraries">http://www.clcohio.org/member-libraries</a>.
+</p>
+
+@using (Html.BeginForm("Unsubscribe", "Email", FormMethod.Post))
+{
+    <div class="editor">
+        @Html.LabelFor(m => m.Barcode)
+        @Html.EditorFor(m => m.Barcode)
+        @Html.ValidationMessageFor(m => m.Barcode)
+    </div>
+
+    <div class="editor">
+        @Html.LabelFor(m => m.Pin)
+        @Html.EditorFor(m => m.Pin)
+        @Html.ValidationMessageFor(m => m.Pin)
+    </div>
+
+    <div class="editor">
+        <button type="submit">Submit</button>
+    </div>
+}
+

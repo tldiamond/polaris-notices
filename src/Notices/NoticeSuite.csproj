@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{41BF6ECE-7936-4543-B9D2-D40D4D01CD73}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NoticeSuite</RootNamespace>
+    <AssemblyName>NoticeSuite</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.Core">
+      <HintPath>..\packages\Hangfire.Core.1.5.2\lib\net45\Hangfire.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.Dashboard.Authorization">
+      <HintPath>..\packages\Hangfire.Dashboard.Authorization.2.1.0\lib\net45\Hangfire.Dashboard.Authorization.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer">
+      <HintPath>..\packages\Hangfire.SqlServer.1.5.2\lib\net45\Hangfire.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer.Msmq">
+      <HintPath>..\packages\HangFire.SqlServer.MSMQ.1.5.2\lib\net45\Hangfire.SqlServer.Msmq.dll</HintPath>
+    </Reference>
+    <Reference Include="HipchatApiV2">
+      <HintPath>..\packages\Hipchat-CS.0.0.49\lib\HipchatApiV2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.3.2.0.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Polaris API Library, Version=1.0.12.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\PolarisApiLibrary.1.1\lib\3.5\Polaris API Library.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net451\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.4.0.18\lib\net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Twilio.Api, Version=3.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Twilio.4.4.0\lib\3.5\Twilio.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="Twilio.Twiml">
+      <HintPath>..\packages\Twilio.TwiML.3.3.6\lib\3.5\Twilio.Twiml.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.1.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.1.2\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.1.2\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.1.2\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.1.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.1.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Extras\Dialin_In_Email_CheckedOutTitles.txt" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="dev.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="settings.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\PublishProfiles\canada.pubxml" />
+    <None Include="Properties\PublishProfiles\deploy test bypass.pubxml" />
+    <None Include="Properties\PublishProfiles\deploy test.pubxml" />
+    <None Include="Properties\PublishProfiles\dev production test.pubxml" />
+    <None Include="Properties\PublishProfiles\dev release.pubxml" />
+    <None Include="Properties\PublishProfiles\dev.pubxml" />
+    <None Include="Properties\PublishProfiles\local debug.pubxml" />
+    <None Include="Properties\PublishProfiles\release.pubxml" />
+    <None Include="Properties\PublishProfiles\dev - web deploy.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <None Include="Service References\SmsService\SmsService.disco" />
+    <None Include="Service References\SmsService\configuration91.svcinfo" />
+    <None Include="Service References\SmsService\configuration.svcinfo" />
+    <None Include="Service References\SmsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppSettings.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CallVariables.cs" />
+    <Compile Include="Controllers\DialoutController.cs" />
+    <Compile Include="Controllers\DialinController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\GroupSmsController.cs" />
+    <Compile Include="Controllers\HistoryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RejectionsController.cs" />
+    <Compile Include="Controllers\SmsController.cs" />
+    <Compile Include="Data\Dialin_Ignore_List.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Dialin_Patrons.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Dialout_Strings.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Dialout_String_Types.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EmailDomain.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetCheckedOutItems_Result.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\GetClosedDates_Result.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Internal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Internal.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Notices.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Notices.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Notices.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Notices.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Notices.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Organization.cs">
+      <DependentUpon>PolarisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Patron.cs">
+      <DependentUpon>PolarisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatronNote.cs">
+      <DependentUpon>PolarisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PatronRegistration.cs">
+      <DependentUpon>PolarisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PolarisModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PolarisModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PolarisModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PolarisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PolarisModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PolarisModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PolarisNotification.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PolarisOrganization.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RecordSet.cs">
+      <DependentUpon>PolarisModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RecordSets.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\RecordSetTypes.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SMS_Group.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SMS_Queue.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TodaysHoldCall.cs">
+      <DependentUpon>Notices.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\_NoticeEntities.cs" />
+    <Compile Include="Data\_PolarisEntities.cs" />
+    <Compile Include="Data\_PolarisNotification.cs" />
+    <Compile Include="Extensions\CallExtension.cs" />
+    <Compile Include="Extensions\FormCollectionExtension.cs" />
+    <Compile Include="Extensions\LoggerExtension.cs" />
+    <Compile Include="Extensions\NotificationExtension.cs" />
+    <Compile Include="Extensions\NotificationListExtensions.cs" />
+    <Compile Include="Extensions\OrganizationExtensions.cs" />
+    <Compile Include="Extensions\PatronExtension.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
+    <Compile Include="Extensions\TaskExtensions.cs" />
+    <Compile Include="Extensions\TwilioResponseExtension.cs" />
+    <Compile Include="Extensions\WcfExtensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Janitor.cs" />
+    <Compile Include="Methods.cs" />
+    <Compile Include="Models\Actions.cs" />
+    <Compile Include="Models\callListModel.cs" />
+    <Compile Include="Models\CallResponse.cs" />
+    <Compile Include="Models\ItemType.cs" />
+    <Compile Include="Models\MailEvent.cs" />
+    <Compile Include="Models\MandrillMessage.cs" />
+    <Compile Include="Models\MessagePart.cs" />
+    <Compile Include="Models\RejectionRemovalFailure.cs" />
+    <Compile Include="Models\RejectionRemovalSuccess.cs" />
+    <Compile Include="Models\RejectionResultViewModel.cs" />
+    <Compile Include="Models\RejectionListEntry.cs" />
+    <Compile Include="Models\smsListModel.cs" />
+    <Compile Include="Models\SubresourceUris.cs" />
+    <Compile Include="Models\TwilioCall.cs" />
+    <Compile Include="Models\UnsubscribeViewModel.cs" />
+    <Compile Include="Notifier.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\BounceRecordSets.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BounceRecordSets.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\SpamRecordSets.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpamRecordSets.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\CustomAdminAuthorize.cs" />
+    <Compile Include="Service References\SmsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Dialout\Dialout.cs" />
+    <Compile Include="Services\Mandrill\Mandrill.cs" />
+    <Compile Include="Services\SMS\SMS.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Variables.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <EntityDeploy Include="Data\Notices.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Notices.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\Notices.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Notices.edmx</DependentUpon>
+      <LastGenOutput>Notices.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\Notices.edmx.diagram">
+      <DependentUpon>Notices.edmx</DependentUpon>
+    </Content>
+    <Content Include="Data\Notices.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Notices.edmx</DependentUpon>
+      <LastGenOutput>Notices.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Data\PolarisModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PolarisModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Data\PolarisModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PolarisModel.edmx</DependentUpon>
+      <LastGenOutput>PolarisModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\PolarisModel.edmx.diagram">
+      <DependentUpon>PolarisModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Data\PolarisModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PolarisModel.edmx</DependentUpon>
+      <LastGenOutput>PolarisModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="prod.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NLog.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\debug.pubxml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\History\Calls.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Shared\InvalidRecording.cshtml" />
+    <Content Include="Views\History\Sms.cshtml" />
+    <None Include="Service References\SmsService\SmsService.wsdl" />
+    <None Include="Service References\SmsService\SmsService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\SmsService\SmsService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="user.config.blank">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Views\Email\RequestReceived.cshtml" />
+    <Content Include="Views\Email\Unsubscribed.cshtml" />
+    <Content Include="Views\Email\Unsubscribe.cshtml" />
+    <Content Include="Views\Rejections\RemovalResult.cshtml" />
+    <Content Include="Views\Rejections\Remove.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.dev.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Test\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Data\Internal.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Internal.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\BounceRecordSets.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>BounceRecordSets.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\SpamRecordSets.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SpamRecordSets.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\SmsService\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64132</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:64133/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

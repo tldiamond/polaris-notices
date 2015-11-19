@@ -1,0 +1,55 @@
+﻿@model NoticeSuite.Model.SmsListModel
+@{
+    ViewBag.Title = "History";
+}
+
+<div id="container">
+
+    @if (!string.IsNullOrWhiteSpace(Model.PhoneNumber))
+    {
+        <h2>Most Recent Messages Sent to @Model.PhoneNumber</h2>
+    }
+    else
+    {
+        <h2>Recently Sent SMS</h2>
+    }
+    @using(Html.BeginForm("Sms", "History", FormMethod.Get))
+    {
+        @Html.Label("Phone Number")@:&nbsp;
+        @Html.TextBox("pn");
+        <input type="submit" />
+        if (!string.IsNullOrWhiteSpace(Model.PhoneNumber))
+        {
+            @Html.ActionLink("Clear", "sms")
+        }
+    }
+    <hr />
+
+    <table class="list-table">
+        <tr>
+            <td>
+                Time
+            </td>
+            <td>
+                To
+            </td>
+            <td>
+                Message
+            </td>
+        </tr>
+        @foreach (var m in Model.Messages.OrderByDescending(msg=>msg.DateSent))
+        {
+            <tr>
+                <td>
+                    @m.DateSent.ToLocalTime()
+                </td>
+                <td>
+                    @m.To
+                </td>
+                <td>
+                    @m.Body
+                </td>
+            </tr>
+        }
+    </table>
+</div>

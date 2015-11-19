@@ -1,0 +1,588 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NoticeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dialin_Ignore_List">
+          <Key>
+            <PropertyRef Name="PhoneNumber" />
+          </Key>
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dialin_Patrons">
+          <Key>
+            <PropertyRef Name="Barcode" />
+            <PropertyRef Name="PhoneNumber" />
+          </Key>
+          <Property Name="Barcode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dialout_String_Types">
+          <Key>
+            <PropertyRef Name="StringTypeID" />
+          </Key>
+          <Property Name="StringTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dialout_Strings">
+          <Key>
+            <PropertyRef Name="StringID" />
+          </Key>
+          <Property Name="StringID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="StringTypeID" Type="int" Nullable="false" />
+          <Property Name="Value" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailDomains">
+          <Key>
+            <PropertyRef Name="Domain" />
+          </Key>
+          <Property Name="Domain" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CLC_Notices.dbo.RecordSets' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RecordSets">
+          <Key>
+            <PropertyRef Name="RecordSetID" />
+            
+            
+          </Key>
+          <Property Name="RecordSetID" Type="int" Nullable="false" />
+          <Property Name="OrganizationID" Type="int" Nullable="false" />
+          <Property Name="RecordSetTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CLC_Notices.dbo.RecordSetTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RecordSetTypes">
+          <Key>
+            <PropertyRef Name="RecordSetTypeID" />
+            
+          </Key>
+          <Property Name="RecordSetTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SMS_Group">
+          <Key>
+            <PropertyRef Name="PhoneNumber" />
+          </Key>
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SMS_Queue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="InsertDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CLC_Notices.dbo.PolarisNotifications' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PolarisNotifications">
+          <Key>
+            <PropertyRef Name="NotificationTypeID" />
+            <PropertyRef Name="PatronID" />
+            <PropertyRef Name="ItemRecordID" />
+            <PropertyRef Name="PatronBranch" />
+            <PropertyRef Name="DeliveryOptionID" />
+            <PropertyRef Name="ReportingBranchID" />
+            <PropertyRef Name="ReportingLibraryID" />
+          </Key>
+          <Property Name="NotificationTypeID" Type="int" Nullable="false" />
+          <Property Name="PatronID" Type="int" Nullable="false" />
+          <Property Name="PatronBarcode" Type="varchar" MaxLength="20" />
+          <Property Name="NameFirst" Type="varchar" MaxLength="32" />
+          <Property Name="NameLast" Type="varchar" MaxLength="32" />
+          <Property Name="ItemRecordID" Type="int" Nullable="false" />
+          <Property Name="PatronBranch" Type="int" Nullable="false" />
+          <Property Name="PatronBranchAbbr" Type="varchar" MaxLength="15" />
+          <Property Name="PatronLibrary" Type="int" />
+          <Property Name="PatronLibraryAbbr" Type="varchar" MaxLength="15" />
+          <Property Name="DeliveryOptionID" Type="int" Nullable="false" />
+          <Property Name="DeliveryString" Type="varchar" MaxLength="20" />
+          <Property Name="ReportingBranchID" Type="int" Nullable="false" />
+          <Property Name="ReportingBranchAbbr" Type="varchar" MaxLength="15" />
+          <Property Name="ReportingLibraryID" Type="int" Nullable="false" />
+          <Property Name="HoldTillDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CLC_Notices.dbo.PolarisOrganizations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PolarisOrganizations">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="OrganizationCodeID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="SA_ContactPersonID" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="DisplayName" />
+          </Key>
+          <Property Name="OrganizationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentOrganizationID" Type="int" />
+          <Property Name="OrganizationCodeID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Abbreviation" Type="varchar" MaxLength="15" />
+          <Property Name="SA_ContactPersonID" Type="int" Nullable="false" />
+          <Property Name="CreatorID" Type="int" Nullable="false" />
+          <Property Name="ModifierID" Type="int" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ModificationDate" Type="datetime" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CLC_Notices.dbo.TodaysHoldCalls' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TodaysHoldCalls">
+          <Key>
+            <PropertyRef Name="PatronID" />
+            <PropertyRef Name="ReportingOrgId" />
+            <PropertyRef Name="ReportingLibraryID" />
+          </Key>
+          <Property Name="PatronID" Type="int" Nullable="false" />
+          <Property Name="ReportingOrgId" Type="int" Nullable="false" />
+          <Property Name="ReportingLibraryID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Dialout_Strings_Dialout_String_Types">
+          <End Role="Dialout_String_Types" Type="Self.Dialout_String_Types" Multiplicity="1" />
+          <End Role="Dialout_Strings" Type="Self.Dialout_Strings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dialout_String_Types">
+              <PropertyRef Name="StringTypeID" />
+            </Principal>
+            <Dependent Role="Dialout_Strings">
+              <PropertyRef Name="StringTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetCheckedOutItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="patronId" Type="int" Mode="In" />
+          <Parameter Name="itemType" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetClosedDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="orgid" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="NoticeModelStoreContainer">
+          <EntitySet Name="Dialin_Ignore_List" EntityType="Self.Dialin_Ignore_List" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dialin_Patrons" EntityType="Self.Dialin_Patrons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dialout_String_Types" EntityType="Self.Dialout_String_Types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dialout_Strings" EntityType="Self.Dialout_Strings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailDomains" EntityType="Self.EmailDomains" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SMS_Group" EntityType="Self.SMS_Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SMS_Queue" EntityType="Self.SMS_Queue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecordSets" EntityType="Self.RecordSets" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RecordSets].[RecordSetID] AS [RecordSetID], 
+    [RecordSets].[OrganizationID] AS [OrganizationID], 
+    [RecordSets].[RecordSetTypeID] AS [RecordSetTypeID]
+    FROM [dbo].[RecordSets] AS [RecordSets]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RecordSetTypes" EntityType="Self.RecordSetTypes" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RecordSetTypes].[RecordSetTypeID] AS [RecordSetTypeID], 
+    [RecordSetTypes].[Description] AS [Description]
+    FROM [dbo].[RecordSetTypes] AS [RecordSetTypes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PolarisNotifications" EntityType="Self.PolarisNotifications" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PolarisNotifications].[NotificationTypeID] AS [NotificationTypeID], 
+    [PolarisNotifications].[PatronID] AS [PatronID], 
+    [PolarisNotifications].[PatronBarcode] AS [PatronBarcode], 
+    [PolarisNotifications].[NameFirst] AS [NameFirst], 
+    [PolarisNotifications].[NameLast] AS [NameLast], 
+    [PolarisNotifications].[ItemRecordID] AS [ItemRecordID], 
+    [PolarisNotifications].[PatronBranch] AS [PatronBranch], 
+    [PolarisNotifications].[PatronBranchAbbr] AS [PatronBranchAbbr], 
+    [PolarisNotifications].[PatronLibrary] AS [PatronLibrary], 
+    [PolarisNotifications].[PatronLibraryAbbr] AS [PatronLibraryAbbr], 
+    [PolarisNotifications].[DeliveryOptionID] AS [DeliveryOptionID], 
+    [PolarisNotifications].[DeliveryString] AS [DeliveryString], 
+    [PolarisNotifications].[ReportingBranchID] AS [ReportingBranchID], 
+    [PolarisNotifications].[ReportingBranchAbbr] AS [ReportingBranchAbbr], 
+    [PolarisNotifications].[ReportingLibraryID] AS [ReportingLibraryID], 
+    [PolarisNotifications].[HoldTillDate] AS [HoldTillDate]
+    FROM [dbo].[PolarisNotifications] AS [PolarisNotifications]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PolarisOrganizations" EntityType="Self.PolarisOrganizations" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PolarisOrganizations].[OrganizationID] AS [OrganizationID], 
+    [PolarisOrganizations].[ParentOrganizationID] AS [ParentOrganizationID], 
+    [PolarisOrganizations].[OrganizationCodeID] AS [OrganizationCodeID], 
+    [PolarisOrganizations].[Name] AS [Name], 
+    [PolarisOrganizations].[Abbreviation] AS [Abbreviation], 
+    [PolarisOrganizations].[SA_ContactPersonID] AS [SA_ContactPersonID], 
+    [PolarisOrganizations].[CreatorID] AS [CreatorID], 
+    [PolarisOrganizations].[ModifierID] AS [ModifierID], 
+    [PolarisOrganizations].[CreationDate] AS [CreationDate], 
+    [PolarisOrganizations].[ModificationDate] AS [ModificationDate], 
+    [PolarisOrganizations].[DisplayName] AS [DisplayName]
+    FROM [dbo].[PolarisOrganizations] AS [PolarisOrganizations]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TodaysHoldCalls" EntityType="Self.TodaysHoldCalls" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TodaysHoldCalls].[PatronID] AS [PatronID], 
+    [TodaysHoldCalls].[ReportingOrgId] AS [ReportingOrgId], 
+    [TodaysHoldCalls].[ReportingLibraryID] AS [ReportingLibraryID]
+    FROM [dbo].[TodaysHoldCalls] AS [TodaysHoldCalls]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Dialout_Strings_Dialout_String_Types" Association="Self.FK_Dialout_Strings_Dialout_String_Types">
+            <End Role="Dialout_String_Types" EntitySet="Dialout_String_Types" />
+            <End Role="Dialout_Strings" EntitySet="Dialout_Strings" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NoticeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dialout_String_Types">
+          <Key>
+            <PropertyRef Name="StringTypeID" />
+          </Key>
+          <Property Name="StringTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Dialout_Strings" Relationship="Self.FK_Dialout_Strings_Dialout_String_Types" FromRole="Dialout_String_Types" ToRole="Dialout_Strings" />
+        </EntityType>
+        <EntityType Name="Dialout_Strings">
+          <Key>
+            <PropertyRef Name="StringID" />
+          </Key>
+          <Property Name="StringID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="StringTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Dialout_String_Types" Relationship="Self.FK_Dialout_Strings_Dialout_String_Types" FromRole="Dialout_Strings" ToRole="Dialout_String_Types" />
+        </EntityType>
+        <Association Name="FK_Dialout_Strings_Dialout_String_Types">
+          <End Role="Dialout_String_Types" Type="Self.Dialout_String_Types" Multiplicity="1" />
+          <End Role="Dialout_Strings" Type="Self.Dialout_Strings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dialout_String_Types">
+              <PropertyRef Name="StringTypeID" />
+            </Principal>
+            <Dependent Role="Dialout_Strings">
+              <PropertyRef Name="StringTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NoticeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dialout_String_Types" EntityType="Self.Dialout_String_Types" />
+          <EntitySet Name="Dialout_Strings" EntityType="Self.Dialout_Strings" />
+          <AssociationSet Name="FK_Dialout_Strings_Dialout_String_Types" Association="Self.FK_Dialout_Strings_Dialout_String_Types">
+            <End Role="Dialout_String_Types" EntitySet="Dialout_String_Types" />
+            <End Role="Dialout_Strings" EntitySet="Dialout_Strings" />
+          </AssociationSet>
+          <EntitySet Name="PolarisNotifications" EntityType="NoticeModel.PolarisNotification" />
+          <FunctionImport Name="GetClosedDates" ReturnType="Collection(NoticeModel.GetClosedDates_Result)">
+          <Parameter Name="orgid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Dialin_Ignore_List" EntityType="NoticeModel.Dialin_Ignore_List" />
+          <EntitySet Name="Dialin_Patrons" EntityType="NoticeModel.Dialin_Patrons" />
+          <EntitySet Name="SMS_Queue" EntityType="NoticeModel.SMS_Queue" />
+          <EntitySet Name="PolarisOrganizations" EntityType="NoticeModel.PolarisOrganization" />
+          <EntitySet Name="SMS_Group" EntityType="NoticeModel.SMS_Group" />
+          <EntitySet Name="RecordSets" EntityType="NoticeModel.RecordSets" />
+          <EntitySet Name="RecordSetTypes" EntityType="NoticeModel.RecordSetTypes" />
+          <EntitySet Name="TodaysHoldCalls" EntityType="NoticeModel.TodaysHoldCall" />
+          <FunctionImport Name="GetCheckedOutItems" ReturnType="Collection(NoticeModel.GetCheckedOutItems_Result)">
+            <Parameter Name="patronId" Mode="In" Type="Int32" />
+            <Parameter Name="itemType" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="EmailDomains" EntityType="NoticeModel.EmailDomain" />
+        </EntityContainer>
+        <EntityType Name="PolarisNotification">
+          <Key>
+            <PropertyRef Name="NotificationTypeID" />
+            <PropertyRef Name="PatronID" />
+            <PropertyRef Name="ItemRecordID" />
+            <PropertyRef Name="PatronBranch" />
+            <PropertyRef Name="DeliveryOptionID" />
+            <PropertyRef Name="ReportingBranchID" />
+            <PropertyRef Name="ReportingLibraryID" />
+          </Key>
+          <Property Name="NotificationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="PatronID" Type="Int32" Nullable="false" />
+          <Property Name="PatronBarcode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NameFirst" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="NameLast" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ItemRecordID" Type="Int32" Nullable="false" />
+          <Property Name="PatronBranch" Type="Int32" Nullable="false" />
+          <Property Name="PatronBranchAbbr" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PatronLibrary" Type="Int32" />
+          <Property Name="PatronLibraryAbbr" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryOptionID" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryString" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ReportingBranchID" Type="Int32" Nullable="false" />
+          <Property Name="ReportingBranchAbbr" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ReportingLibraryID" Type="Int32" Nullable="false" />
+          <Property Name="HoldTillDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <ComplexType Name="GetClosedDates_Result">
+          <Property Type="Int32" Name="OrganizationID" Nullable="false" />
+          <Property Type="DateTime" Name="DateClosed" Nullable="false" Precision="23" />
+        </ComplexType>
+        <EntityType Name="Dialin_Ignore_List">
+          <Key>
+            <PropertyRef Name="PhoneNumber" />
+          </Key>
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Dialin_Patrons">
+          <Key>
+            <PropertyRef Name="Barcode" />
+            <PropertyRef Name="PhoneNumber" />
+          </Key>
+          <Property Name="Barcode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SMS_Queue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="InsertDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="PolarisOrganization">
+          <Key>
+            <PropertyRef Name="OrganizationID" />
+            <PropertyRef Name="OrganizationCodeID" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="SA_ContactPersonID" />
+            <PropertyRef Name="CreatorID" />
+            <PropertyRef Name="DisplayName" />
+          </Key>
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentOrganizationID" Type="Int32" />
+          <Property Name="OrganizationCodeID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Abbreviation" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="SA_ContactPersonID" Type="Int32" Nullable="false" />
+          <Property Name="CreatorID" Type="Int32" Nullable="false" />
+          <Property Name="ModifierID" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModificationDate" Type="DateTime" Precision="3" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SMS_Group">
+          <Key>
+            <PropertyRef Name="PhoneNumber" />
+          </Key>
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RecordSets">
+          <Key>
+            <PropertyRef Name="RecordSetID" />
+          </Key>
+          <Property Name="RecordSetID" Type="Int32" Nullable="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+          <Property Name="RecordSetTypeID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecordSetTypes">
+          <Key>
+            <PropertyRef Name="RecordSetTypeID" />
+          </Key>
+          <Property Name="RecordSetTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TodaysHoldCall">
+          <Key>
+            <PropertyRef Name="PatronID" />
+            <PropertyRef Name="ReportingOrgId" />
+            <PropertyRef Name="ReportingLibraryID" />
+          </Key>
+          <Property Name="PatronID" Type="Int32" Nullable="false" />
+          <Property Name="ReportingOrgId" Type="Int32" Nullable="false" />
+          <Property Name="ReportingLibraryID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="GetCheckedOutItems_Result">
+          <Property Type="Int32" Name="ItemRecordID" Nullable="false" />
+          <Property Type="String" Name="Barcode" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="BrowseTitle" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="OrganizationID" Nullable="false" />
+          <Property Type="DateTime" Name="CheckOutDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="DueDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <EntityType Name="EmailDomain">
+          <Key>
+            <PropertyRef Name="Domain" />
+          </Key>
+          <Property Name="Domain" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OrganizationID" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NoticeModelStoreContainer" CdmEntityContainer="NoticeEntities">
+          <EntitySetMapping Name="Dialout_String_Types">
+            <EntityTypeMapping TypeName="NoticeModel.Dialout_String_Types">
+              <MappingFragment StoreEntitySet="Dialout_String_Types">
+                <ScalarProperty Name="StringTypeID" ColumnName="StringTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dialout_Strings">
+            <EntityTypeMapping TypeName="NoticeModel.Dialout_Strings">
+              <MappingFragment StoreEntitySet="Dialout_Strings">
+                <ScalarProperty Name="StringID" ColumnName="StringID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="StringTypeID" ColumnName="StringTypeID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PolarisNotifications">
+            <EntityTypeMapping TypeName="NoticeModel.PolarisNotification">
+              <MappingFragment StoreEntitySet="PolarisNotifications">
+                <ScalarProperty Name="HoldTillDate" ColumnName="HoldTillDate" />
+                <ScalarProperty Name="ReportingLibraryID" ColumnName="ReportingLibraryID" />
+                <ScalarProperty Name="ReportingBranchAbbr" ColumnName="ReportingBranchAbbr" />
+                <ScalarProperty Name="ReportingBranchID" ColumnName="ReportingBranchID" />
+                <ScalarProperty Name="DeliveryString" ColumnName="DeliveryString" />
+                <ScalarProperty Name="DeliveryOptionID" ColumnName="DeliveryOptionID" />
+                <ScalarProperty Name="PatronLibraryAbbr" ColumnName="PatronLibraryAbbr" />
+                <ScalarProperty Name="PatronLibrary" ColumnName="PatronLibrary" />
+                <ScalarProperty Name="PatronBranchAbbr" ColumnName="PatronBranchAbbr" />
+                <ScalarProperty Name="PatronBranch" ColumnName="PatronBranch" />
+                <ScalarProperty Name="ItemRecordID" ColumnName="ItemRecordID" />
+                <ScalarProperty Name="NameLast" ColumnName="NameLast" />
+                <ScalarProperty Name="NameFirst" ColumnName="NameFirst" />
+                <ScalarProperty Name="PatronBarcode" ColumnName="PatronBarcode" />
+                <ScalarProperty Name="PatronID" ColumnName="PatronID" />
+                <ScalarProperty Name="NotificationTypeID" ColumnName="NotificationTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetClosedDates" FunctionName="NoticeModel.Store.GetClosedDates">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NoticeModel.GetClosedDates_Result">
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="DateClosed" ColumnName="DateClosed" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Dialin_Ignore_List">
+            <EntityTypeMapping TypeName="NoticeModel.Dialin_Ignore_List">
+              <MappingFragment StoreEntitySet="Dialin_Ignore_List">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dialin_Patrons">
+            <EntityTypeMapping TypeName="NoticeModel.Dialin_Patrons">
+              <MappingFragment StoreEntitySet="Dialin_Patrons">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SMS_Queue">
+            <EntityTypeMapping TypeName="NoticeModel.SMS_Queue">
+              <MappingFragment StoreEntitySet="SMS_Queue">
+                <ScalarProperty Name="InsertDate" ColumnName="InsertDate" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PolarisOrganizations">
+            <EntityTypeMapping TypeName="NoticeModel.PolarisOrganization">
+              <MappingFragment StoreEntitySet="PolarisOrganizations">
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="ModificationDate" ColumnName="ModificationDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ModifierID" ColumnName="ModifierID" />
+                <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
+                <ScalarProperty Name="SA_ContactPersonID" ColumnName="SA_ContactPersonID" />
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OrganizationCodeID" ColumnName="OrganizationCodeID" />
+                <ScalarProperty Name="ParentOrganizationID" ColumnName="ParentOrganizationID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SMS_Group">
+            <EntityTypeMapping TypeName="NoticeModel.SMS_Group">
+              <MappingFragment StoreEntitySet="SMS_Group">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecordSets">
+            <EntityTypeMapping TypeName="NoticeModel.RecordSets">
+              <MappingFragment StoreEntitySet="RecordSets">
+                <ScalarProperty Name="RecordSetTypeID" ColumnName="RecordSetTypeID" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="RecordSetID" ColumnName="RecordSetID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecordSetTypes">
+            <EntityTypeMapping TypeName="NoticeModel.RecordSetTypes">
+              <MappingFragment StoreEntitySet="RecordSetTypes">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="RecordSetTypeID" ColumnName="RecordSetTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TodaysHoldCalls">
+            <EntityTypeMapping TypeName="NoticeModel.TodaysHoldCall">
+              <MappingFragment StoreEntitySet="TodaysHoldCalls">
+                <ScalarProperty Name="ReportingLibraryID" ColumnName="ReportingLibraryID" />
+                <ScalarProperty Name="ReportingOrgId" ColumnName="ReportingOrgId" />
+                <ScalarProperty Name="PatronID" ColumnName="PatronID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetCheckedOutItems" FunctionName="NoticeModel.Store.GetCheckedOutItems">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NoticeModel.GetCheckedOutItems_Result">
+                <ScalarProperty Name="ItemRecordID" ColumnName="ItemRecordID" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="BrowseTitle" ColumnName="BrowseTitle" />
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="CheckOutDate" ColumnName="CheckOutDate" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="EmailDomains">
+            <EntityTypeMapping TypeName="NoticeModel.EmailDomain">
+              <MappingFragment StoreEntitySet="EmailDomains">
+                <ScalarProperty Name="OrganizationID" ColumnName="OrganizationID" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

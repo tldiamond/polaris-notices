@@ -1,0 +1,14 @@
+﻿Hello,
+<p/><br/>
+Someone using the library telephone account service 1.877.77.BOOKS asked to have a list of checked out titles sent to the email address on file with the library.
+<p/>
+Below is a list of the titles currently checked out on the account and their due dates.
+<p/>
+<br/>
+<span mc:edit="titles">
+    
+</span>
+<p>
+If you have any questions about this message, please contact your library or log into your account online at: <a href="https://catalog.clcohio.org/">https://catalog.clcohio.org/</a>
+<p/>
+Thank you for using the Library Telephone Account service.

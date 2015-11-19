@@ -1,0 +1,32 @@
+﻿namespace NoticeSuite.Models
+{
+    public enum Actions
+    {
+        None,
+        Dial,
+        TransferFromDialout,
+        TransferFromDialin,
+        TransferToItiva,
+        BarcodeEntered,
+        PinEntered,
+        IncorrectInfoEntered,
+        RetrievedRememberedPatron,
+        RetrievedPatronContinued,
+        Timeout,
+        TransferredToLibrary,
+        ListAllItems,
+        ListItems,
+        NextItem,
+        ListOverdueItems,
+        EmailItems,
+        ItemByBarcode,
+        RenewAll,
+        RenewIndividual,
+        ListHolds,
+        NextHold,
+        CancelHold,
+        ConfirmCancel,
+        MainMenu,
+        NoMenuEntry
+    }
+}

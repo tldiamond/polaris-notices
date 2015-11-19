@@ -1,0 +1,9 @@
+﻿@model NoticeSuite.RejectionResultViewModel
+
+@{
+    ViewBag.Title = "RemovalResult";
+}
+
+<h2>Result</h2>
+Status: <span>@if(Model.Success) { <text>Success</text> } else { <text>Fail</text> }</span><br />
+Message: @Model.Message

@@ -1,0 +1,90 @@
+﻿.running
+{
+  background-color:Green;
+  width:10px;
+  padding:0 !important;
+}
+
+.notrunning
+{
+  background-color:Red;
+  width:10px;
+  padding:0 !important;
+}
+
+.table
+{  
+  border:1px;
+  border-collapse:collapse;
+}
+
+.table td
+{
+  border:1px solid #000;
+  padding:5px 10px 5px 10px;  
+}
+
+.blankcell 
+{  
+  border:none !important;  
+}
+
+.hidden
+{
+    display:none;
+}
+
+body
+{
+   background:url("/content/bg.png") repeat;
+}
+
+.list-table th
+{
+    text-align:left;
+}
+
+.list-table tr:nth-child(odd) 
+{
+    background-color: #F7F7F7;
+}
+
+.list-table td 
+{
+    padding: 7px 10px;
+    font-size: 13px;
+    color: #333;
+    border: none;
+    border-top: 1px solid #CCC;
+}
+
+.list-table
+{
+    width: 100%;
+    margin: auto;
+    border-bottom: 1px solid #CCC;
+    max-width: 100%;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+div .header
+{
+    margin:auto;
+    width:77%;
+}
+
+#container
+{
+    padding:20px;
+    background:white;
+    width:77%;
+    margin:auto;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.field-validation-error, .validation-summary-errors{
+    color:red;
+}
