@@ -31,7 +31,6 @@ Run create_notices_db.sql from Extras folder in src
 ##Application Configuration
 These steps are from Visual Studio 2015, depending on your version and environment some adjustments may be necessary.
 * Open the solution in Visual Studio and do a build to make sure all the nuget packages get installed properly
-* Create a copy of the user.config.example file and rename to user.config
 * Fill in the required fields in the settings.config file
   * auth_string
   * permission_admin_group
